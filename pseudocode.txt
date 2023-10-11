@@ -1,0 +1,84 @@
+PROBLEM: 
+
+********** state problems and give examples *************
+
+
+
+
+Sort SAM file: 
+- Samtools
+- before feeding SAM file into algorithm
+
+
+
+ALGORITHM:
+
+```Reference Based PCR Duplicate Removal tool. Given a SAM file of uniquely
+ mapped reads, remove all PCR duplicates (retain only a single copy of each
+ read).```
+
+import argparse
+
+def cigar_conversion(str) -> int:
+    '''Returns the adjusted left most starting position when there is soft-clipping'''
+    input: CIGAR string: "2S12M"
+    output: adjusted starting pos: 111
+
+out_line = ""
+out_rname = ""
+out_umi = ""
+out_strand = ""
+out_alignment_start = ""
+
+with open (sam file, "r") as in, open(output file, "w") as out: 
+    while TRUE: 
+        curr_line = in.readline().strip().split()
+        curr_rname = SAM col 3
+        curr_ umi = SAM col 1
+        curr_strand = ""
+        curr_ alignment_start = ""
+
+        pos = SAM col 4
+        flag = SAM col 2
+        cigar = SAM col 6
+
+        if EOF is "": 
+            break
+
+        # check to see if read is unmapped, if it is then move to the next line
+        if((flag & 4) == 4): 
+            pass
+
+        # check to see if the read is on the + or - strand
+        if((flag & 16) == 16): 
+            strand = "-"
+        else: 
+            strand = "+"
+
+       # check to see if there is soft-clipping. If there is soft-clipping use the function
+       to adjust the left most start position and use that as alignment_start. If there is 
+       no soft-clipping use pos as the alignment_start. 
+        if cigar has 'S' (soft-clipping): 
+            alignment_start = cigar_conversion(cigar)
+        else: 
+            alignment_start = pos
+
+
+        if out and curr are the same: 
+            pass
+
+        if out and curr are different: 
+            write out (out_line)
+            replace out variables with curr 
+            reset curr variables
+            * continue the loop *
+
+
+
+        
+
+
+
+
+
+
