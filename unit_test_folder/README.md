@@ -27,7 +27,7 @@ What I am testing in input_test.sam:
     - Output_1: only the first read is written to the output file, the duplicates are not in the output file. 
 
     - Test_2: 2 additional lines are exactly the same except that one has soft-clipping (will test that the soft clipping function is working properly to adjust POS)
-    - Output: only the first read is written to the output file. 
+    - Output_2: only the first read is written to the output file. 
 
 - Not a PCR duplicate: 
     - Different chromosome (RNAME): 
