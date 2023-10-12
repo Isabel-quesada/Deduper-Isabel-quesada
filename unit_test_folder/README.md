@@ -15,8 +15,8 @@ Goal: given a sorted SAM file of uniquely mapped reads, remove all PCR duplicate
 ## Test Examples
 
 Total lines per file: 
-input_test.sam : 79 lines
-output_test.sam: 74
+- input_test.sam : 79 lines
+- output_test.sam: 74
 
 What I am testing in input_test.sam: 
 - Is the read unmapped? If so, move on to the next read. 
