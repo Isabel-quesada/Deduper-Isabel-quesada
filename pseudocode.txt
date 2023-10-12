@@ -1,13 +1,6 @@
-PROBLEM: 
-
-********** state problems and give examples *************
-
-
-
-
 Sort SAM file: 
 - Samtools
-- before feeding SAM file into algorithm
+- sort before feeding SAM file into algorithm
 
 
 
@@ -20,9 +13,16 @@ ALGORITHM:
 import argparse
 
 def cigar_conversion(str) -> int:
-    '''Returns the adjusted left most starting position when there is soft-clipping'''
+    '''Adjust the starting position when there is soft-clipping'''
+    return alignment_start
     input: CIGAR string: "2S12M"
-    output: adjusted starting pos: 111
+    output: adjusted starting pos: 111   (original pos: 113)
+
+
+with open(STL96.txt, "r") as fh:
+    UMIs = []
+    generate a list with 96 known UMIs (append to UMIs)
+
 
 out_line = ""
 out_rname = ""
@@ -30,24 +30,39 @@ out_umi = ""
 out_strand = ""
 out_alignment_start = ""
 
-with open (sam file, "r") as in, open(output file, "w") as out: 
+with open (sam file, "r") as in, open(output file, "w") as out:
     while TRUE: 
         curr_line = in.readline().strip().split()
+
+        if curr_line.startswith('@'): 
+            write curr_line to the output file
+            continue
+
+        if curr_line = "":
+            # EOF 
+            break
+
         curr_rname = SAM col 3
-        curr_ umi = SAM col 1
+        curr_umi = ""
         curr_strand = ""
         curr_ alignment_start = ""
 
+        umi = SAM col 1
         pos = SAM col 4
-        flag = SAM col 2
+        flag = int(SAM col 2)
         cigar = SAM col 6
 
-        if EOF is "": 
-            break
-
-        # check to see if read is unmapped, if it is then move to the next line
+       
+        # check to see if the read is unmapped 
         if((flag & 4) == 4): 
-            pass
+            continue
+
+
+        # check to see if umi is in known UMIs list
+        if umi not in UMIs: 
+            continue
+        else: 
+            curr_umi = umi
 
         # check to see if the read is on the + or - strand
         if((flag & 16) == 16): 
@@ -65,12 +80,12 @@ with open (sam file, "r") as in, open(output file, "w") as out:
 
 
         if out and curr are the same: 
-            pass
+            continue
 
         if out and curr are different: 
-            write out (out_line)
+            write out (out_line) to output file
             replace out variables with curr 
-            reset curr variables
+            reset curr variables to ""
             * continue the loop *
 
 
