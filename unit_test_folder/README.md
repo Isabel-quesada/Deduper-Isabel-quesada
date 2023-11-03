@@ -19,9 +19,6 @@ Total lines per file:
 - output_test.sam: 74
 
 What I am testing in input_test.sam: 
-- Is the read unmapped? If so, move on to the next read. 
-    - Test: change the bitwise flag to 4
-    - output: Not included in the output
 - PCR duplicate? 
     - Test_1: 3 lines are exactly the same. 
     - Output_1: only the first read is written to the output file, the duplicates are not in the output file. 
