@@ -1,0 +1,87 @@
+PCR DUPLICATE REMOVAL TOOL
+
+***********************************************************************
+11/05/23
+
+python script:  /home/iquesada/bgmp/bioinfo/Bi624/Deduper-Isabel-quesada/quesada_deduper.py
+bash script:  /home/iquesada/bgmp/bioinfo/Bi624/Deduper-Isabel-quesada/quesada_deduper.sh
+conda env: bgmp_py311
+    Python version: 3.11.0
+    samtools version: 1.16.1
+
+samtools sort command: 
+    samtools sort C1_SE_uniqAlign.sam -o C1_SE_uniqAlign.sorted.sam 
+
+ISSUE: 
+command: 
+    ./quesada_deduper.py -f /home/iquesada/bgmp/bioinfo/Bi624/Deduper-Isabel-quesada/test_files/C1_SE_uniqAlign.sorted.sam -u STL96.txt -o results.sam
+
+Problem: I am not removing all the PCR Duplicates. 
+
+Here is my stats output file for the run using my current script: 
+Number of unknown UMIs: 0
+Number of PCR duplicates: 4260379
+Number of unique reads per chromosome:
+Chromosome	Number of Reads
+1	703405
+10	567973
+11	1226579
+12	362119
+13	472439
+14	390160
+15	442322
+16	362428
+17	519844
+18	291566
+19	582903
+2	2896571
+3	551773
+4	594521
+5	565300
+6	514542
+7	1132683
+8	583784
+9	632844
+MT	204115
+X	319300
+Y	2252
+JH584299.1	3
+GL456233.2	656
+GL456211.1	6
+GL456221.1	4
+GL456354.1	1
+GL456210.1	5
+GL456212.1	4
+JH584304.1	294
+GL456379.1	2
+GL456367.1	3
+GL456239.1	1
+GL456383.1	1
+MU069435.1	5469
+GL456389.1	1
+GL456370.1	21
+GL456390.1	1
+GL456382.1	1
+GL456396.1	17
+GL456368.1	3
+MU069434.1	3
+JH584295.1	112
+
+* these numbers are different than what others in the class are getting. 
+
+ERRORS: In def(cigar_conversion) function:
+    - I was not accounting for 'I' in the Cigar string.
+    - Typo: for '+' strand I added the soft clipped bases instead of subtracting them from pos. 
+
+I fix these errors and now the numbers are matching what others in the class are getting!
+
+Bash Script (to get slurm output): /home/iquesada/bgmp/bioinfo/Bi624/Deduper-Isabel-quesada/quesada_deduper.sh
+    - input: /home/iquesada/bgmp/bioinfo/Bi624/Deduper-Isabel-quesada/test_files/C1_SE_uniqAlign.sorted.sam
+    - output: 
+        results.sam
+        statistics.txt
+
+slurm-1062081.out: 
+    Elapsed (wall clock) time (h:mm:ss or m:ss): 1:11.84
+    Maximum resident set size (kbytes): 618676
+    Exit status: 0
