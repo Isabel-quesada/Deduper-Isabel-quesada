@@ -9,6 +9,7 @@ conda env: bgmp_py311
     Python version: 3.11.0
     samtools version: 1.16.1
 
+input sam file (Needs to be sorted): /projects/bgmp/shared/deduper/C1_SE_uniqAlign.sam
 samtools sort command: 
     samtools sort C1_SE_uniqAlign.sam -o C1_SE_uniqAlign.sorted.sam 
 
