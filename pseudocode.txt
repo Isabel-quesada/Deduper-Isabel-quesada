@@ -86,14 +86,5 @@ with open (sam file, "r") as in, open(output file, "w") as out:
             write out (out_line) to output file
             replace out variables with curr 
             reset curr variables to ""
-            * continue the loop *
-
-
-
-        
-
-
-
-
 
 

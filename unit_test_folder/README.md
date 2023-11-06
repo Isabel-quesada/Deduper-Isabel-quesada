@@ -15,19 +15,16 @@ Goal: given a sorted SAM file of uniquely mapped reads, remove all PCR duplicate
 ## Test Examples
 
 Total lines per file: 
-input_test.sam : 79 lines
-output_test.sam: 74
+- input_test.sam : 77 
+- output_test.sam: 74
 
 What I am testing in input_test.sam: 
-- Is the read unmapped? If so, move on to the next read. 
-    - Test: change the bitwise flag to 4
-    - output: Not included in the output
 - PCR duplicate? 
     - Test_1: 3 lines are exactly the same. 
     - Output_1: only the first read is written to the output file, the duplicates are not in the output file. 
 
     - Test_2: 2 additional lines are exactly the same except that one has soft-clipping (will test that the soft clipping function is working properly to adjust POS)
-    - Output: only the first read is written to the output file. 
+    - Output_2: only the first read is written to the output file. 
 
 - Not a PCR duplicate: 
     - Different chromosome (RNAME): 
